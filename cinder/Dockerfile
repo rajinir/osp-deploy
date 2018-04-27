@@ -22,5 +22,11 @@ RUN yum localinstall -y newpkgs/*.rpm
 RUN rm -rf newpkgs
 RUN rm -rf osp_deploy.sh
 
+# Add required license info
+RUN mkdir /licenses
+COPY licensing.txt /licenses
+
+RUN rpm -aV
+
 # Switch to cinder user
 USER cinder
